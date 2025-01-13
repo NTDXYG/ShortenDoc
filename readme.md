@@ -1,9 +1,11 @@
-# Title: Official Implementation of "Less is More: DocString Compression in Code Generation"
+# Official Implementation of "Less is More: DocString Compression in Code Generation"
 
 ## Introduction
 This paper is currently under review. Therefore, we only open-source the core code for reference. The complete project code will be released after the paper is accepted.
 
-Please refer to usage_demo.py for usage instructions.
+Please refer to *usage_demo.py* for usage instructions.
+
+You can change the model and tokenizer in *usage_demo.py* to test different models(e.g., Qwen2.5-Coder-Instruct, CodeGPT-py, etc.).
 
 ## Comparison Results
 
