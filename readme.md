@@ -5,7 +5,7 @@ This paper is currently under review. Therefore, we only open-source the core co
 
 Please refer to *usage_demo.py* for usage instructions.
 
-You can change the model and tokenizer in *usage_demo.py* to test different models(e.g., Qwen2.5-Coder-Instruct, CodeGPT-py, etc.).
+You can change the model and tokenizer in *usage_demo.py* to test different models(e.g., CodeGPT-py, Qwen2.5-Coder-Instruct, etc.).
 
 ## Comparison Results
 

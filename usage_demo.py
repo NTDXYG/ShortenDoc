@@ -2,8 +2,8 @@ from ShortenDoc import ShortenDoc
 from transformers import AutoTokenizer, AutoModelForCausalLM
 import torch
 
-tokenizer = AutoTokenizer.from_pretrained("Qwen/Qwen2.5-Coder-0.5B-Instruct")
-model = AutoModelForCausalLM.from_pretrained("Qwen/Qwen2.5-Coder-0.5B-Instruct",
+tokenizer = AutoTokenizer.from_pretrained("D:\models\CodeGPT-small-py-adaptedGPT2")
+model = AutoModelForCausalLM.from_pretrained("D:\models\CodeGPT-small-py-adaptedGPT2",
             torch_dtype=torch.bfloat16)
 SD = ShortenDoc(model, tokenizer, threshold=0.99, topk=5)
 
@@ -29,7 +29,22 @@ prompt = '''def tri(n):
 prompt_list = [p for p in prompt.strip().split('\"\"\"') if len(p) > 0]
 template = '\"\"\"'.join(prompt_list[:-1]) + '\"\"\"\n    '
 text = prompt_list[-1].strip()
-results, ratio = SD.shorten(text, template)
+
+
+# 进行多次推理测试
+import time
+num_trials = 10
+total_time = 0
+for _ in range(num_trials):
+    start_time = time.time()
+    results, ratio = SD.shorten(text, template)
+    end_time = time.time()
+    total_time += end_time - start_time
+
+# 计算平均推理时间
+average_time = total_time / num_trials
+print(f"平均推理时长: {average_time:.2f} 秒")
+
 new_prompt = template + results[-1] + '\n    \"\"\"\n'
 print(new_prompt)
 print('Shorten Radio: ', ratio)
